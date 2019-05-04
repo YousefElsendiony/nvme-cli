@@ -46,6 +46,29 @@ static char END_DEFAULT[] = "__end_default__";
 
 static const char *append_usage_str = "";
 
+/*start COMS 6156 test code*/
+static int tonytiger;
+
+//int *volatile REGISTER = 0xfeed;
+//*REGISTER = new_val;
+
+volatile int ready;
+int message_Tony[100];
+void foo_Tony (int i_Tony) {
+  message_Tony[i_Tony/10] = 42;
+  ready = 1;
+  printf("%d", ready);
+}
+
+volatile int ready2;
+void foo_tony2(void){
+  ready2 = ready2;
+}
+
+
+
+/*end COMS 6156 test code*/
+
 void argconfig_append_usage(const char *str)
 {
 	append_usage_str = str;
